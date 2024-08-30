@@ -1,12 +1,18 @@
+
 import { Card } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
 import { CardHeader } from "@/components/ui/card";
 import { CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-
-import GmailIcon from "@/components/gmailIcon";
 import { FaGithub, FaReddit } from 'react-icons/fa';
+
+import Image from 'next/image';
+import  gmailLogo from '@/assets/gmail.png';
+import  githubLogo from '@/assets/github.png';
+import  redditLogo from '@/assets/reddit.png';
+
+
 import { SiGmail } from 'react-icons/si';
 import Link from "next/link";
 import { cookies } from "next/headers";
@@ -32,87 +38,104 @@ async function getUserInfo(accessToken: string) {
 }
 
 export default async function Dashboard() {
-  type Notifications = {
-    linkedin: { message: string }[];
-    gmail: { subject: string }[];
-    twitter: { text: string }[];
-  };
-
   const cookieStore = cookies();
   const token = cookieStore.get("reddit_access_token")?.value;
 
   const userInfo = await getUserInfo(token as string);
   console.log(userInfo);
 
-  // const [notifications, setNotifications] = useState<Notifications>({
-  //   linkedin: [],
-  //   gmail: [{ subject: "Gmail Notification 1" }],
-  //   twitter: [],
-  // });
+  // Sample notifications
+  const gmailNotifications = [
+    { subject: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+    { subject: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+    { subject: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+  ];
 
-  // const [loading, setLoading] = useState(true);
-  // const cookies = useCookies();
+  const redditNotifications = [
+    { message: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+    { message: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+  ];
 
-  // useEffect(() => {
-  //   // console.log(cookies.get("reddit_access_token"));
-
-  //   // Simulate an API call
-  //   const fetchNotifications = async () => {
-  //     setLoading(true);
-  //     // Simulated delay for API response
-  //     setTimeout(() => {
-  //       // Replace with actual API data
-  //       setNotifications({
-  //         linkedin: [{ message: "LinkedIn Notification 1" }],
-  //         gmail: [{ subject: "Gmail Notification 1" }],
-  //         twitter: [{ text: "Twitter Notification 1" }],
-  //       });
-  //       setLoading(false);
-  //     }, 2000);
-  //   };
-
-  //   fetchNotifications();
-  // }, []);
+  const githubNotifications = [
+    { message: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+    { message: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+    { message: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+    { message: "Event has been created", date: "Sunday, December 03, 2023 at 10:00 AM" },
+  ];
 
   return (
-    <div className="min-h-screen p-8">
+    <div >
       <p>{userInfo}</p>
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-extrabold mb-10">
-          Notifications Dashboard
-        </h1>
+      <div >
+        <h1 className="text-4xl font-extrabold mb-10 text-center">Dashboard</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Gmail Notifications */}
           <Card>
             <CardHeader>
-              <SiGmail className="text-3xl" style={{ color: 'red' }} />
-            </CardHeader>
+            <Image   src={gmailLogo} alt="gmail logo"  />
+
+              
+          
+
+              </CardHeader>
+            <CardContent>
+              {gmailNotifications.map((notification, index) => (
+                <div key={index} className="flex justify-between items-center border-solid border-2  p-3 rounded-lg mb-2">
+                  <div>
+                    <p>{notification.subject}</p>
+                    <p className="text-sm text-gray-400">{notification.date}</p>
+                  </div>
+                  <Button >Undo</Button>
+                </div>
+              ))}
+            </CardContent>
           </Card>
 
-          {/* Reddit Notifications */}     
-          <Card >
+          {/* Reddit Notifications */}
+          <Card>
             <CardHeader>
-              <FaReddit className="text-3xl text-orange-500" />
+            <Image   src={redditLogo} alt="reddit logo"  />
             </CardHeader>
-         </Card>
+            <CardContent>
+              {redditNotifications.map((notification, index) => (
+                <div key={index} className="flex justify-between items-center border-solid border-2  p-3 rounded-lg mb-2">
+                  <div>
+                    <p>{notification.message}</p>
+                    <p className="text-sm text-gray-400">{notification.date}</p>
+                  </div>
+                  <Button>Undo</Button>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
 
-         {/* Github Notifications */}
-         <Card >
-             <CardHeader>
-                <FaGithub className="text-3xl text-gray-300" />
-             </CardHeader>
-         </Card>
-        </div>
+          {/* Github Notifications */}
+          <Card>
+            <CardHeader>
+            
+            <Image   src={githubLogo} alt="github logo"  />
           
-   
-           
+            </CardHeader>
+            <CardContent>
+              {githubNotifications.map((notification, index) => (
+                <div key={index} className="flex justify-between items-center border-solid border-2  p-3 rounded-lg mb-2">
+                  <div>
+                    <p>{notification.message}</p>
+                    <p className="text-sm text-gray-400">{notification.date}</p>
+                  </div>
+                  <Button >Undo</Button>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
 
-        
-     
+        <div className="mt-10 flex justify-end">
+          <Link href="/api/reddit">
+            <Button>Reddit</Button>
+          </Link>
+        </div>
       </div>
-      <Link href="/api/reddit">
-        <Button>Reddit</Button>
-      </Link>
     </div>
   );
 }
