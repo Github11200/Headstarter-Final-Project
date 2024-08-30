@@ -4,6 +4,10 @@ import { CardHeader } from "@/components/ui/card";
 import { CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+
+import GmailIcon from "@/components/gmailIcon";
+import { FaGithub, FaReddit } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 import Link from "next/link";
 import { cookies } from "next/headers";
 
@@ -78,66 +82,33 @@ export default async function Dashboard() {
           Notifications Dashboard
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* LinkedIn Notifications */}
-          <Card>
-            <CardHeader>
-              <CardTitle>LinkedIn</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* {loading ? (
-                <Skeleton className="w-full h-10" />
-              ) : notifications.linkedin.length > 0 ? (
-                notifications.linkedin.map((notification, index) => (
-                  <div key={index}>{notification.message}</div>
-                ))
-              ) : (
-                <p>No notifications available.</p>
-              )} */}
-            </CardContent>
-          </Card>
-
           {/* Gmail Notifications */}
           <Card>
             <CardHeader>
-              <CardTitle>Gmail</CardTitle>
+              <SiGmail className="text-3xl" style={{ color: 'red' }} />
             </CardHeader>
-            <CardContent>
-              {/* {loading ? (
-                <Skeleton className="w-full h-10" />
-              ) : notifications.gmail.length > 0 ? (
-                notifications.gmail.map((notification, index) => (
-                  <div key={index}>{notification.subject}</div>
-                ))
-              ) : (
-                <p>No notifications available.</p>
-              )} */}
-            </CardContent>
           </Card>
 
-          {/* Twitter Notifications */}
-          <Card>
+          {/* Reddit Notifications */}     
+          <Card >
             <CardHeader>
-              <CardTitle>Twitter</CardTitle>
+              <FaReddit className="text-3xl text-orange-500" />
             </CardHeader>
-            <CardContent>
-              {/* {loading ? (
-                <Skeleton className="w-full h-10" />
-              ) : notifications.twitter.length > 0 ? (
-                notifications.twitter.map((notification, index) => (
-                  <div key={index}>{notification.text}</div>
-                ))
-              ) : (
-                <p>No notifications available.</p>
-              )} */}
-            </CardContent>
-          </Card>
-        </div>
+         </Card>
 
-        {/* <div className="mt-10 flex justify-end">
-          <Button onClick={() => window.location.reload()}>
-            Refresh Notifications
-          </Button>
-        </div> */}
+         {/* Github Notifications */}
+         <Card >
+             <CardHeader>
+                <FaGithub className="text-3xl text-gray-300" />
+             </CardHeader>
+         </Card>
+        </div>
+          
+   
+           
+
+        
+     
       </div>
       <Link href="/api/reddit">
         <Button>Reddit</Button>
