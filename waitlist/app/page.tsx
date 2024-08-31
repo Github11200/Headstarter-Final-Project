@@ -135,7 +135,7 @@ const CombinedLayout = () => {
         </Card>
 
           {/* Card 3: Logo card */}
-          <Card className="md:col-span-2 bg-black text-black p-4 rounded-lg flex items-center justify-center border-none">
+          <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg flex items-center justify-center border-none">
           <CardContent>
             <img
               src="/notify.png"
@@ -170,8 +170,8 @@ const CombinedLayout = () => {
         {/* Card 4: Small card with text */}
         <Card className="md:col-span-4 bg-gradient-to-r text-white p-4 rounded-lg border-none items-center justify-center">
           <CardContent className="flex items-center justify-center h-full w-full">
-            <CardTitle className="text-3xl font-semibold">All in, <br/>
-            <span className="inline-block ml-10">one Dashboard.</span>
+            <CardTitle className="text-3xl font-semibold">Track all notificantions, <br/>
+            <span className="inline-block ml-10"> in one Dashboard.</span>
             </CardTitle>
           </CardContent>
         </Card>
@@ -183,3 +183,4 @@ const CombinedLayout = () => {
 };
 
 export default CombinedLayout;
+
