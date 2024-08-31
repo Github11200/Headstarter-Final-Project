@@ -209,12 +209,12 @@ const CombinedLayout = () => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
                 control={form.control}
-                name="fullName"
+                name="email"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <Input
-                        placeholder="Join the waitlist"
+                        placeholder="Enter your email"
                         {...field}
                         className="bg-[#333] border-none text-white rounded-md px-4 py-2"
                       />
@@ -223,13 +223,14 @@ const CombinedLayout = () => {
                   </FormItem>
                 )}
               />
-
-              <Button
+              <div className="flex justify-center"> <Button
                 type="submit"
                 className="bg-[#333] text-white rounded-md px-6 py-2 hover:bg-[#444]"
               >
                 Submit
-              </Button>
+              </Button></div>
+
+             
             </form>
           </Form>
         </div>
@@ -244,7 +245,7 @@ const CombinedLayout = () => {
               All Your Social Media in one Place
             </CardTitle>
             <CardDescription className="mt-4 text-lg">
-              We combine artistic creativity with practical solutions to create designs that are both stunning and functional.
+              Out platform unifies chats,posts,stories,creating a seamless social experience where you can do it all without switching apps.
             </CardDescription>
           </CardContent>
         </Card>
@@ -253,9 +254,9 @@ const CombinedLayout = () => {
         <Card className="md:col-span-2 row-span-3 bg-blue-900 p-6 rounded-lg flex items-center justify-center">
           <CardContent>
             <h2 className="text-6xl font-bold tracking-tight leading-none text-center">
-              Hype
+              Connect
             </h2>
-            <p className="mt-2 text-lg text-center">Creative</p>
+            <p className="mt-2 text-lg text-center">Anytime,Anywhere</p>
           </CardContent>
         </Card>
 
@@ -274,9 +275,9 @@ const CombinedLayout = () => {
         {/* Card 4: Small card with text */}
         <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg">
           <CardContent>
-            <CardTitle className="text-xl font-semibold">Graphic Design</CardTitle>
+            <CardTitle className="text-xl font-semibold">Stay updated</CardTitle>
             <CardDescription>
-              Creative and compelling graphic design services.
+              Get real time updates across all your networks in one streamlined feed.
             </CardDescription>
           </CardContent>
         </Card>
