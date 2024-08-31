@@ -1,33 +1,57 @@
-
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form";
+import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Loader2, CheckCircle, XCircle } from "lucide-react";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import axios from "axios";
 
 // Define the form schema
 const waitlistFormSchema = z.object({
-  fullName: z.string().min(1, "Full Name is required"),
   email: z.string().email("Invalid email address"),
 });
 
 const CombinedLayout = () => {
-
   const form = useForm<z.infer<typeof waitlistFormSchema>>({
     resolver: zodResolver(waitlistFormSchema),
     defaultValues: {
-      fullName: "",
       email: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof waitlistFormSchema>) {
-    console.log(values);
-  
+  // State management
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function onSubmit(values: z.infer<typeof waitlistFormSchema>) {
+    setLoading(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    // Debugging: Log the values
+    console.log("Form Values: ", values);
+
+    try {
+      const response = await axios.post("/api/subscribe", { email: values.email });
+      setSuccessMessage(response.data.message);
+      form.reset(); // Reset form fields
+    } catch (error: any) {
+      console.error("Error submitting form:", error); // Debugging: Log the error
+      if (error.response) {
+        setErrorMessage(error.response.data.error);
+      } else {
+        setErrorMessage("An unexpected error occurred.");
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -39,15 +63,12 @@ const CombinedLayout = () => {
             Join the <span className="bg-black text-white px-2 py-1 rounded-md">Future</span> of Social Media.
           </h2>
           <p className="text-gray-400 mb-4">
-            Be part of one unified platform that brings all your favorite social
-            media features into a single, seamless experience. Connect,
-            communicate like never before.
+            Be part of one unified platform that brings all your favorite social media features into a single, seamless experience. Connect, communicate like never before.
           </p>
 
           <div className="bg-[#2c2c2c] p-4 rounded-md mb-6">
-           
             <img
-              src="/tech.png" 
+              src="/tech.png"
               alt="Decorative Image"
               className="rounded-md"
             />
@@ -71,14 +92,29 @@ const CombinedLayout = () => {
                   </FormItem>
                 )}
               />
-              <div className="flex justify-center"> <Button
-                type="submit"
-                className="bg-[#333] text-white rounded-md px-6 py-2 hover:bg-[#444]"
-              >
-                Submit
-              </Button></div>
-
-             
+              <div className="flex justify-center">
+                <Button
+                  type="submit"
+                  className="bg-[#333] text-white rounded-md px-6 py-2 hover:bg-[#444]"
+                  disabled={loading}
+                >
+                  {loading ? <Loader2 className="animate-spin mr-2" /> : "Submit"}
+                </Button>
+              </div>
+              {successMessage && (
+                <Alert >
+                  <CheckCircle className="mr-2 h-4 w-4" />
+                  <AlertTitle>Success</AlertTitle>
+                  <AlertDescription>{successMessage}</AlertDescription>
+                </Alert>
+              )}
+              {errorMessage && (
+                <Alert variant="destructive" className="mt-4">
+                  <XCircle className="mr-2 h-4 w-4" />
+                  <AlertTitle>Error</AlertTitle>
+                  <AlertDescription>{errorMessage}</AlertDescription>
+                </Alert>
+              )}
             </form>
           </Form>
         </div>
@@ -93,7 +129,7 @@ const CombinedLayout = () => {
               All Your Social Media in one Place
             </CardTitle>
             <CardDescription className="mt-4 text-lg">
-              Out platform unifies chats,posts,stories,creating a seamless social experience where you can do it all without switching apps.
+              Out platform unifies chats, posts, stories, creating a seamless social experience where you can do it all without switching apps.
             </CardDescription>
           </CardContent>
         </Card>
@@ -104,7 +140,7 @@ const CombinedLayout = () => {
             <h2 className="text-6xl font-bold tracking-tight leading-none text-center">
               Connect
             </h2>
-            <p className="mt-2 text-lg text-center">Anytime,Anywhere</p>
+            <p className="mt-2 text-lg text-center">Anytime, Anywhere</p>
           </CardContent>
         </Card>
 
@@ -112,7 +148,7 @@ const CombinedLayout = () => {
         <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg flex items-center justify-center">
           <CardContent>
             <img
-              src="/path/to/logo.png" 
+              //src="/path/to/logo.png"
               alt="Hype Creative Logo"
               className="h-12"
             />
@@ -125,7 +161,7 @@ const CombinedLayout = () => {
           <CardContent>
             <CardTitle className="text-xl font-semibold">Stay updated</CardTitle>
             <CardDescription>
-              Get real time updates across all your networks in one streamlined feed.
+              Get real-time updates across all your networks in one streamlined feed.
             </CardDescription>
           </CardContent>
         </Card>
@@ -134,7 +170,7 @@ const CombinedLayout = () => {
         <Card className="md:col-span-2 bg-gradient-to-t from-black to-blue-900 p-6 rounded-lg flex items-center justify-center">
           <CardContent>
             <img
-              src="/path/to/another-logo.png" 
+              //src="/path/to/another-logo.png"
               alt="Another Logo"
               className="h-8"
             />
@@ -146,5 +182,3 @@ const CombinedLayout = () => {
 };
 
 export default CombinedLayout;
-
-
