@@ -167,9 +167,8 @@ const waitlistFormSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
 
-// Combined Layout Component
 const CombinedLayout = () => {
-  // Initialize form with react-hook-form and Zod schema
+
   const form = useForm<z.infer<typeof waitlistFormSchema>>({
     resolver: zodResolver(waitlistFormSchema),
     defaultValues: {
@@ -178,10 +177,9 @@ const CombinedLayout = () => {
     },
   });
 
-  // Form submission handler
   function onSubmit(values: z.infer<typeof waitlistFormSchema>) {
     console.log(values);
-    // Handle form submission (e.g., send to an API)
+  
   }
 
   return (
@@ -199,9 +197,9 @@ const CombinedLayout = () => {
           </p>
 
           <div className="bg-[#2c2c2c] p-4 rounded-md mb-6">
-            {/* Sample Content for Design Consistency */}
+           
             <img
-              src="/tech.png" // Replace with an actual image path
+              src="/tech.png" 
               alt="Decorative Image"
               className="rounded-md"
             />
@@ -237,13 +235,13 @@ const CombinedLayout = () => {
         </div>
       </div>
 
-      {/* Bento Grid Section */}
+      {/* Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:w-2/3">
         {/* Card 1: Large main card */}
         <Card className="md:col-span-4 row-span-2 bg-gradient-to-r from-black to-blue-900 p-8 rounded-lg">
           <CardContent>
             <CardTitle className="text-4xl font-extrabold text-white">
-              Blending Creativity with Practicality
+              All Your Social Media in one Place
             </CardTitle>
             <CardDescription className="mt-4 text-lg">
               We combine artistic creativity with practical solutions to create designs that are both stunning and functional.
@@ -265,7 +263,7 @@ const CombinedLayout = () => {
         <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg flex items-center justify-center">
           <CardContent>
             <img
-              src="/path/to/logo.png" // Replace with your logo path
+              src="/path/to/logo.png" 
               alt="Hype Creative Logo"
               className="h-12"
             />
@@ -287,7 +285,7 @@ const CombinedLayout = () => {
         <Card className="md:col-span-2 bg-gradient-to-t from-black to-blue-900 p-6 rounded-lg flex items-center justify-center">
           <CardContent>
             <img
-              src="/path/to/another-logo.png" // Replace with your logo path
+              src="/path/to/another-logo.png" 
               alt="Another Logo"
               className="h-8"
             />
