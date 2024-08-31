@@ -123,7 +123,7 @@ const CombinedLayout = () => {
       {/* Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4 w-full p-8 pr-20">
         {/* Card 1: Large main card */}
-        <Card className="md:col-span-4 row-span-2 bg-gradient-to-r from-black to-blue-900 p-8 rounded-lg border-none">
+        <Card className="md:col-span-4 row-span-2 bg-gradient-to-r from-black to-gray-700 p-8 rounded-lg border-none">
           <CardContent>
             <CardTitle className="text-4xl font-extrabold text-white">
               All Your Social Media in one Place
@@ -135,7 +135,7 @@ const CombinedLayout = () => {
         </Card>
 
           {/* Card 3: Logo card */}
-          <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg flex items-center justify-center">
+          <Card className="md:col-span-2 bg-black text-black p-4 rounded-lg flex items-center justify-center border-none">
           <CardContent>
             <img
               src="/notify.png"
@@ -146,10 +146,10 @@ const CombinedLayout = () => {
         </Card>
 
         {/* Card 2: Vertical card */}
-        <Card className="md:col-span-2 bg-[#47474a] p-6 rounded-lg flex items-center justify-center border-none">
+        <Card className="md:col-span-2 bg-white p-6 rounded-lg flex items-center justify-center border-none">
         <CardContent className="flex items-center justify-center h-full w-full">
-          <h2 className="text-3xl font-bold tracking-tight leading-none text-center text-white">
-            Stay Updated
+          <h2 className="text-3xl font-bold tracking-tight leading-none text-center text-black">
+            Stay Updated.
           </h2>
         </CardContent>
         </Card>
@@ -168,12 +168,11 @@ const CombinedLayout = () => {
 
       
         {/* Card 4: Small card with text */}
-        <Card className="md:col-span-4 bg-gradient-to-r text-white p-4 rounded-lg border-none">
-          <CardContent>
-            <CardTitle className="text-3xl font-semibold">All in one Dashboard</CardTitle>
-            <CardDescription>
-              Get real-time updates across all your networks in one streamlined feed.
-            </CardDescription>
+        <Card className="md:col-span-4 bg-gradient-to-r text-white p-4 rounded-lg border-none items-center justify-center">
+          <CardContent className="flex items-center justify-center h-full w-full">
+            <CardTitle className="text-3xl font-semibold">All in, <br/>
+            <span className="inline-block ml-10">one Dashboard.</span>
+            </CardTitle>
           </CardContent>
         </Card>
 
