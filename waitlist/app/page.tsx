@@ -55,7 +55,7 @@ const CombinedLayout = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen bg-black text-white">
+    <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       {/* Form Section */}
       <div className="flex items-center justify-center p-10 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-md w-full space-y-8 rounded-lg shadow-lg bg-[#1e1e1e] p-6">
@@ -121,7 +121,7 @@ const CombinedLayout = () => {
       </div>
 
       {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:w-2/3">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-4 w-full p-8 pr-20">
         {/* Card 1: Large main card */}
         <Card className="md:col-span-4 row-span-2 bg-gradient-to-r from-black to-blue-900 p-8 rounded-lg">
           <CardContent>
@@ -134,8 +134,20 @@ const CombinedLayout = () => {
           </CardContent>
         </Card>
 
+          {/* Card 3: Logo card */}
+          <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg flex items-center justify-center">
+          <CardContent>
+            <img
+              src="/notify.png"
+              alt="Hype Creative Logo"
+              className="h-30 w-30"
+            />
+            <CardTitle className="text-xl font-semibold mt-2">Notify Hub</CardTitle>
+          </CardContent>
+        </Card>
+
         {/* Card 2: Vertical card */}
-        <Card className="md:col-span-2 row-span-3 bg-[#0b0a4f] p-6 rounded-lg flex items-center justify-center">
+        <Card className="md:col-span-2 row-span-2 bg-[#0b0a4f] p-6 rounded-lg flex items-center justify-center">
           <CardContent>
             <h2 className="text-6xl font-bold tracking-tight leading-none text-center">
               Connect
@@ -143,18 +155,19 @@ const CombinedLayout = () => {
             <p className="mt-2 text-lg text-center">Anytime, Anywhere</p>
           </CardContent>
         </Card>
-
-        {/* Card 3: Logo card */}
-        <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg flex items-center justify-center">
+          {/* Card 3: Logo card */}
+          <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg flex items-center justify-center">
           <CardContent>
             <img
               //src="/path/to/logo.png"
               alt="Hype Creative Logo"
               className="h-12"
             />
-            <CardTitle className="text-xl font-semibold mt-2">Hype Creative</CardTitle>
+            <CardTitle className="text-xl font-semibold mt-2">FusionFeed</CardTitle>
           </CardContent>
         </Card>
+
+      
 
         {/* Card 4: Small card with text */}
         <Card className="md:col-span-2 bg-white text-black p-4 rounded-lg">
@@ -166,7 +179,7 @@ const CombinedLayout = () => {
           </CardContent>
         </Card>
 
-        {/* Card 5: Small card with logo */}
+        {/* Card 5: Small card with logo
         <Card className="md:col-span-2 bg-gradient-to-t from-black to-blue-900 p-6 rounded-lg flex items-center justify-center">
           <CardContent>
             <img
@@ -175,7 +188,7 @@ const CombinedLayout = () => {
               className="h-8"
             />
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );
