@@ -6,10 +6,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaReddit } from "react-icons/fa";
 
+// Social Media Logos
 import Image from "next/image";
 import gmailLogo from "@/assets/gmail.png";
 import githubLogo from "@/assets/github.png";
 import redditLogo from "@/assets/reddit.png";
+
 
 import { SiGmail } from "react-icons/si";
 import Link from "next/link";
