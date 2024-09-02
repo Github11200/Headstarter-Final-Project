@@ -17,7 +17,7 @@ export default function Home() {
             {/* Logo */}
             <div className="w-12 h-12 overflow-hidden border-2 border-gray-600">
               <Image
-                src="/logofile/logo.png"
+                src="/logo.png"
                 alt="Logo"
                 width={48}
                 height={48}
