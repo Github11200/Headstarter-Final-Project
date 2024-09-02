@@ -5,9 +5,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const code = searchParams.get("code");
 
   try {
-    console.log("Code: ", code);
-    console.log("Redirect URL: ", process.env.REDDIT_REDIRECT_URL);
-
+    // Get the access token
     const response = await fetch(`https://www.reddit.com/api/v1/access_token`, {
       method: "POST",
       headers: {

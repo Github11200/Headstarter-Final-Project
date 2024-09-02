@@ -12,76 +12,15 @@ import gmailLogo from "@/assets/gmail.png";
 import githubLogo from "@/assets/github.png";
 import redditLogo from "@/assets/reddit.png";
 
-
 import { SiGmail } from "react-icons/si";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
-async function getUserInfo(accessToken: string) {
-  try {
-    const response = await fetch("https://oauth.reddit.com/message/unread", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "User-Agent": "MyApp/1.0.0",
-      },
-    });
-
-    if (!response.ok) {
-      console.log(response);
-
-      throw new Error("Failed to fetch user info");
-    }
-
-    return response.json();
-  } catch (error) {
-    console.error("Error fetching user info:", error);
-    return null;
-  }
-}
-
-async function getGmailNotifications(accessToken: string) {
-  let url = "http://localhost:3000/api/gmail/gmail-notifications";
-
-  if (accessToken) url += `?token=${accessToken}`;
-
-  try {
-    const response = await fetch(url);
-
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch user info");
-    // }
-
-    // return response.json();
-  } catch (error) {
-    console.error("Error fetching user info:", error);
-    return null;
-  }
-}
-
-async function getGitHubNotifications(accessToken: string) {
-  const res = await fetch(
-    `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.GITHUB_REDIRECT_URL}&scope=notifications`
-  );
-  console.log(await res.json());
-}
+import getRedditNotifications from "@/lib/reddit/reddit";
+import getGmailNotifications from "@/lib/gmail/gmail";
+import getGitHubNotifications from "@/lib/github/github";
 
 export default async function Dashboard() {
-  const cookieStore = cookies();
-  const token = cookieStore.get("gmail_access_token")?.value;
-
-  // const userInfo = await getUserInfo(token as string);
-
-  // userInfo?.data?.children?.map((child: any, i: number) => {
-  //   // console.log("From:", child.data.author);
-  //   // console.log("Subject:", child.data.subject);
-  //   // console.log("Body:", child.data.body);
-  //   console.log("New: ", child.data.new);
-  //   console.log(
-  //     "------------------------------------------------------------------------------------"
-  //   );
-  // });
-
   // Sample notifications
   const gmailNotifications = [
     {
