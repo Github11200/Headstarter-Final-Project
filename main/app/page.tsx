@@ -4,14 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CardHeader } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
-import { Avatar } from "@/components/ui/avatar";
 import Link from "next/link";
-
-
-// Team profils import
-import Image from "next/image";
-
-
 
 export default function Home() {
   return (
@@ -61,6 +54,19 @@ export default function Home() {
               <Link href="/learnmore">Learn More</Link>
             </Button>
           </div>
+          {/* Demo */}
+          <div className="mt-12 flex justify-center">
+            <div className="relative w-full max-w-xl" style={{ paddingBottom: '25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full border-2 border-gray-600"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Demo"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -105,56 +111,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section id="team" className="py-12 md:py-14 bg-gray-900">
-        <div className="container mx-auto px-6 md:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center">
-            Meet the Team
-          </h2>
-          <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <Card className="bg-gray-800 hover:bg-gray-700 transition">
-              <CardContent className="flex flex-col items-center">
-                <Avatar
-                  src="/path/to/avatar1.jpg"
-                  alt="Jinay Patel"
-                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-gray-700"
-                />
-                <h4 className="mt-4 text-lg sm:text-xl font-semibold text-white">Jinay Patel</h4>
-                <p className="mt-2 text-gray-400 text-sm sm:text-base">
-                  Full-Stack Web Developer | SWE @ Headstarter | Working on Viral Insight
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-gray-800 hover:bg-gray-700 transition">
-              <CardContent className="flex flex-col items-center">
-                <Avatar
-                  src="/path/to/avatar1.jpg"
-                  alt="Abdelghani Bensalih"
-                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-gray-700"
-                />
-                <h4 className="mt-4 text-lg sm:text-xl font-semibold text-white">Abdelghani Bensalih</h4>
-                <p className="mt-2 text-gray-400 text-sm sm:text-base">
-                  Computer Science Student | SWE @ Headstarter
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-gray-800 hover:bg-gray-700 transition">
-              <CardContent className="flex flex-col items-center">
-                <Avatar
-                  src="/path/to/avatar3.jpg"
-                  alt="Alice Brown"
-                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-gray-700"
-                />
-                <h4 className="mt-4 text-lg sm:text-xl font-semibold text-white">Nebila Wako</h4>
-                <p className="mt-2 text-gray-400 text-sm sm:text-base">
-                  UI/UX Designer | SWE @ Headstarter
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-gray-800 text-gray-400 py-8 md:py-12">
         <div className="container mx-auto px-6 md:px-8 text-center">
@@ -169,3 +125,5 @@ export default function Home() {
     </div>
   );
 }
+
+
