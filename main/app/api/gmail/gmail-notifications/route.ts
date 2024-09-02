@@ -66,6 +66,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
           userId: "me",
           id: message.id!,
         });
+
         return {
           id: email.data.id,
           snippet: email.data.snippet,
