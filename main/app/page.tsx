@@ -5,37 +5,44 @@ import { Card } from "@/components/ui/card";
 import { CardHeader } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="bg-gray-900 text-white font-sans">
       {/* Header */}
       <header className="bg-gray-800 shadow-lg sticky top-0 z-50">
-        <div className="container mx-auto px-6 md:px-8 py-4 md:py-6 flex justify-between items-center">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">NotifyHub</h1>
-          <nav>
-            <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-              <li>
-                <a href="#features" className="text-gray-300 hover:text-white transition text-lg font-medium">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a href="#team" className="text-gray-300 hover:text-white transition text-lg font-medium">
-                  Team
-                </a>
-              </li>
-              <li>
-                <Link href="/dashboard">
-                  <Button
-                    variant="outline"
-                    className="text-white border-white hover:bg-white hover:text-gray-900 transition text-lg font-medium"
-                  >
-                    Get Started
-                  </Button>
-                </Link>
-              </li>
-            </ul>
+        <div className="container mx-auto px-6 md:px-8 py-4 md:py-6 flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            {/* Logo */}
+            <div className="w-12 h-12 overflow-hidden border-2 border-gray-600">
+              <Image
+                src="/logofile/logo.png"
+                alt="Logo"
+                width={48}
+                height={48}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+            </div>
+            {/* Text */}
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">NotifyHub</h1>
+          </div>
+          <nav className="flex items-center space-x-4 md:space-x-6">
+            <a href="#features" className="text-gray-300 hover:text-white transition text-lg font-medium">
+              Features
+            </a>
+            <Link href="/dashboard">
+              <Button
+                variant="outline"
+                className="text-white border-white hover:bg-white hover:text-gray-900 transition text-lg font-medium"
+              >
+                Get Started
+              </Button>
+            </Link>
           </nav>
         </div>
       </header>
@@ -44,7 +51,7 @@ export default function Home() {
       <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-black py-32 md:py-44 text-center">
         <div className="container mx-auto px-6 md:px-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            One Unified Social Media Platform
+            One Unified Notification Platform
           </h2>
           <p className="mt-4 md:mt-6 text-lg md:text-xl text-gray-300">
             Streamline your notifications and stay focused. Get updates from Gmail, Twitter, Github, and more, all in one place.
@@ -125,5 +132,8 @@ export default function Home() {
     </div>
   );
 }
+
+
+
 
 
