@@ -5,7 +5,7 @@ export default async function getRedditNotifications(): Promise<
   RedditMessageData[] | null
 > {
   const cookieStore = cookies();
-  const token = cookieStore.get("gmail_access_token")?.value;
+  const token = cookieStore.get("reddit_access_token")?.value;
 
   if (!token) throw new Error("No token provided");
 

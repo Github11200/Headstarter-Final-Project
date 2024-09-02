@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import Notification from "./types";
+import Notification from "./github-types";
 
 export default async function getGitHubNotifications(): Promise<
   Notification[] | null

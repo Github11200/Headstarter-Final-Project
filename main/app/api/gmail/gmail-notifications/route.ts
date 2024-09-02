@@ -50,6 +50,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
         "gmail_access_token",
         tokens.access_token as string
       );
+
+      redirectResponse.cookies.set(
+        "gmail_refresh_token",
+        tokens.refresh_token as string
+      );
     }
 
     const gmail = google.gmail({ version: "v1", auth: oauth2Client });
