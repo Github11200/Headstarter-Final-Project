@@ -1,11 +1,21 @@
-
 "use client";
 
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -40,9 +50,11 @@ const CombinedLayout = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post("/api/subscribe", { email: values.email });
+      const response = await axios.post("/api/subscribe", {
+        email: values.email,
+      });
       setSuccessMessage(response.data.message);
-      console.log("Success Message:", response.data.message); 
+      console.log("Success Message:", response.data.message);
       form.reset(); // Reset form fields
     } catch (error: any) {
       if (error.response) {
@@ -57,19 +69,31 @@ const CombinedLayout = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col items-center">
-      <div className="absolute top-4 right-4 z-10"><ModeToggle /></div>
+      <div className="absolute top-4 right-4 z-10">
+        <ModeToggle />
+      </div>
       {/* Form Section */}
-      <div className="flex items-center justify-center p-10 flex-1">
+      <div className="flex items-center justify-center p-10 flex-1 min-h-screen">
         <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl space-y-8 mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 mt-16 md:mt-4 leading-[1.2]">
-            Join the <span className="bg-black text-white dark:bg-white dark:text-black px-2 py-1 rounded-md relative z-10">Future</span> of Social Media.
+            Join the{" "}
+            <span className="bg-black text-white dark:bg-white dark:text-black px-2 py-1 rounded-md relative z-10">
+              Future
+            </span>{" "}
+            of Social Media.
           </h2>
           <p className="text-gray-700 dark:text-gray-400 mb-4">
-            Be part of one unified platform that brings all your favorite social media features into a single, seamless experience. Connect, communicate like never before.
+            Be part of one unified platform that brings all your favorite social
+            media features into a single, seamless experience. Connect,
+            communicate like never before.
           </p>
 
           <div className="p-4 rounded-md mb-8 flex justify-center">
-            <img src="/tech.png" alt="Decorative Image" className="rounded-md w-full max-w-sm md:max-w-md lg:max-w-md xl:max-w-xl" />
+            <img
+              src="/tech.png"
+              alt="Decorative Image"
+              className="rounded-md w-full max-w-sm md:max-w-md lg:max-w-md xl:max-w-xl"
+            />
           </div>
 
           <Form {...form}>
@@ -96,7 +120,11 @@ const CombinedLayout = () => {
                   className="bg-gray-200 dark:bg-[#333] text-black dark:text-white rounded-md px-6 py-2 hover:bg-gray-300 dark:hover:bg-[#444]"
                   disabled={loading}
                 >
-                  {loading ? <Loader2 className="animate-spin mr-2" /> : "Submit"}
+                  {loading ? (
+                    <Loader2 className="animate-spin mr-2" />
+                  ) : (
+                    "Submit"
+                  )}
                 </Button>
               </div>
               {successMessage && (
@@ -107,7 +135,10 @@ const CombinedLayout = () => {
                 </Alert>
               )}
               {errorMessage && (
-                <Alert variant="destructive" className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 mt-4">
+                <Alert
+                  variant="destructive"
+                  className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 mt-4"
+                >
                   <XCircle className="mr-2 h-4 w-4" />
                   <AlertTitle>Error</AlertTitle>
                   <AlertDescription>{errorMessage}</AlertDescription>
@@ -117,7 +148,7 @@ const CombinedLayout = () => {
           </Form>
         </div>
       </div>
-      
+
       {/* Grid Section */}
       <div className="w-full p-8 mt-8 md:mt-20 lg:mt-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -128,7 +159,9 @@ const CombinedLayout = () => {
                 All Your Social Media in One Place
               </CardTitle>
               <CardDescription className="mt-2 text-center text-lg">
-                Our platform unifies chats, posts, stories, creating a seamless social experience where you can do it all without switching apps.
+                Our platform unifies chats, posts, stories, creating a seamless
+                social experience where you can do it all without switching
+                apps.
               </CardDescription>
             </CardContent>
           </Card>
@@ -143,14 +176,20 @@ const CombinedLayout = () => {
 
           <Card className="bg-gray-200 dark:bg-white text-black dark:text-black p-6 rounded-lg flex flex-col items-center justify-center col-span-1 row-span-3 overflow-hidden">
             <CardContent className="flex items-center justify-center h-full w-full">
-              <img src="/notify.png" alt="Notify Logo" className="h-full w-full object-cover" />
+              <img
+                src="/notify.png"
+                alt="Notify Logo"
+                className="h-full w-full object-cover"
+              />
             </CardContent>
           </Card>
 
           <Card className="bg-gray-200 dark:bg-white text-black dark:text-black p-6 rounded-lg flex flex-col items-center justify-center col-span-1 row-span-2">
             <CardContent className="flex flex-col items-center justify-center text-center">
               <img src="/connect1.svg" alt="Connect Logo" className="h-24" />
-              <CardTitle className="text-xl font-semibold mt-2">Connect</CardTitle>
+              <CardTitle className="text-xl font-semibold mt-2">
+                Connect
+              </CardTitle>
               <p className="mt-1">Anytime, Anywhere</p>
             </CardContent>
           </Card>
@@ -170,6 +209,3 @@ const CombinedLayout = () => {
 };
 
 export default CombinedLayout;
-
-
-
