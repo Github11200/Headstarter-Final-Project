@@ -85,7 +85,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     if (redirectResponse) return redirectResponse;
     return new Response(JSON.stringify(emailDetails));
   } catch (error) {
-    // console.error("Error accessing Gmail API:", error);
+    console.error("Error accessing Gmail API:", error);
     return new Response(JSON.stringify(error));
   }
 }

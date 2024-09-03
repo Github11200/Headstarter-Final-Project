@@ -13,6 +13,7 @@ import { RedditSignInButton } from "@/components/reddit";
 import { GmailSignInButton } from "@/components/gmail";
 import { GithubSignInButton } from "@/components/github";
 import { cookies } from "next/headers";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 function redditAccountExists() {
   return cookies().get("reddit_access_token") !== undefined;
@@ -75,7 +76,15 @@ export default async function Dashboard() {
 
   return (
     <div className="p-5 min-h-screen">
-      <h1 className="text-4xl font-extrabold mb-10 text-center">Dashboard</h1>
+      <div className="flex justify-center">
+        <div className="flex-1"></div>
+        <h1 className="text-4xl font-extrabold mb-10 text-center">Dashboard</h1>
+        <div className="flex-1 flex justify-end">
+          <Button className="max-w-min">
+            <LogoutLink>Log out</LogoutLink>
+          </Button>
+        </div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Gmail Notifications */}
         <Card>

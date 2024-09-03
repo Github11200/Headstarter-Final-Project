@@ -5,8 +5,12 @@ import { Card } from "@/components/ui/card";
 import { CardHeader } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import Spline from '@splinetool/react-spline/next';
+import Spline from "@splinetool/react-spline/next";
 import Image from "next/image";
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 export default function Home() {
   return (
@@ -32,26 +36,21 @@ export default function Home() {
               </h1>
             </div>
             <nav className="flex items-center space-x-6">
-              <ul className="flex items-center space-x-6">
-                <li>
-                  <a
-                    href="#features"
-                    className="text-gray-300 hover:text-white transition text-lg font-medium"
-                  >
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <Link href="/dashboard">
-                    <Button
-                      variant="outline"
-                      className="text-white border-white hover:bg-white hover:text-gray-900 transition text-lg font-medium"
-                    >
-                      Get Started
-                    </Button>
-                  </Link>
-                </li>
-              </ul>
+              <a
+                href="#features"
+                className="text-gray-300 hover:text-white transition text-lg font-medium"
+              >
+                Features
+              </a>
+
+              <div className="flex gap-2">
+                <Button>
+                  <RegisterLink>Sign Up</RegisterLink>
+                </Button>
+                <Button>
+                  <LoginLink>Sign In</LoginLink>
+                </Button>
+              </div>
             </nav>
           </div>
         </header>
@@ -60,14 +59,12 @@ export default function Home() {
         <section className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-black py-32 md:py-44 text-center overflow-hidden">
           {/* Spline component as background */}
           <div className="absolute inset-y-15 right-[5%] z-15">
-            <Spline
-              scene="https://prod.spline.design/y5kDXIQzIsB7g8UE/scene.splinecode"
-            />
+            <Spline scene="https://prod.spline.design/y5kDXIQzIsB7g8UE/scene.splinecode" />
           </div>
-          
+
           {/* Semi-transparent overlay */}
           <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-          
+
           {/* Content overlay */}
           <div className="relative z-20 container mx-auto px-6 md:px-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
@@ -102,7 +99,10 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="relative py-12 md:py-14 bg-gray-800 bg-opacity-90 z-30">
+        <section
+          id="features"
+          className="relative py-12 md:py-14 bg-gray-800 bg-opacity-90 z-30"
+        >
           <div className="container mx-auto px-6 md:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center">
               Why Choose Us?
@@ -219,4 +219,3 @@ export default function Home() {
     </main>
   );
 }
-
