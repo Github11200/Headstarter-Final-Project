@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import RedditMessageData from "./reddit-types";
 import { cookies } from "next/headers";
 
@@ -7,7 +8,9 @@ export default async function getRedditNotifications(): Promise<
   const cookieStore = cookies();
   const token = cookieStore.get("reddit_access_token")?.value;
 
-  if (!token) throw new Error("No token provided");
+  if (!token) {
+    redirect("/api/reddit/reddit-messages")
+  }
 
   try {
     const response = await fetch(
