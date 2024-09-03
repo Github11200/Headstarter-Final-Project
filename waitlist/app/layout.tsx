@@ -3,6 +3,7 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -11,7 +12,8 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "NotifyHub",
-  description: "A unified platform that streamlines notifications from Gmail, Twitter, GitHub, and more, helping you stay focused with smart summaries and efficient queries",
+  description:
+    "A unified platform that streamlines notifications from Gmail, Twitter, GitHub, and more, helping you stay focused with smart summaries and efficient queries",
 };
 
 export default function RootLayout({
@@ -27,6 +29,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
