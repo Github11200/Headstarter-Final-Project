@@ -2,77 +2,34 @@ import { Card } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
 import { CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
-// Social Media Logos
 import Image from "next/image";
 import gmailLogo from "@/assets/gmail.png";
 import githubLogo from "@/assets/github.png";
 import redditLogo from "@/assets/reddit.png";
-
 import { RedditSignInButton } from "@/components/reddit";
 import { GmailSignInButton } from "@/components/gmail";
 import { GithubSignInButton } from "@/components/github";
+import getGmailNotifications from "@/lib/gmail/gmail";
+import getGitHubNotifications from "@/lib/github/github";
+import getRedditNotifications from "@/lib/reddit/reddit";
 import { cookies } from "next/headers";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
-function redditAccountExists() {
-  return cookies().get("reddit_access_token") !== undefined;
-}
+async function fetchNotifications() {
+  const cookieStore = cookies();
+  const gmailToken = cookieStore.get("gmail_access_token")?.value;
+  const githubToken = cookieStore.get("github_access_token")?.value;
+  const redditToken = cookieStore.get("reddit_access_token")?.value;
 
-function gmailAccountExists() {
-  return cookies().get("gmail_access_token") !== undefined;
-}
+  const gmailNotifications = gmailToken ? await getGmailNotifications() : null;
+  const githubNotifications = githubToken ? await getGitHubNotifications() : null;
+  const redditNotifications = redditToken ? await getRedditNotifications() : null;
 
-function githubAccountExists() {
-  return cookies().get("github_access_token") !== undefined;
+  return { gmailNotifications, githubNotifications, redditNotifications };
 }
 
 export default async function Dashboard() {
-  // Sample notifications
-  const gmailNotifications = [
-    {
-      subject: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-    {
-      subject: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-    {
-      subject: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-  ];
-
-  const redditNotifications = [
-    {
-      message: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-    {
-      message: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-  ];
-
-  const githubNotifications = [
-    {
-      message: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-    {
-      message: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-    {
-      message: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-    {
-      message: "Event has been created",
-      date: "Sunday, December 03, 2023 at 10:00 AM",
-    },
-  ];
+  const { gmailNotifications, githubNotifications, redditNotifications } = await fetchNotifications();
 
   return (
     <div className="p-5 min-h-screen">
@@ -92,20 +49,18 @@ export default async function Dashboard() {
             <Image src={gmailLogo} alt="gmail logo" />
           </CardHeader>
           <CardContent>
-            {!gmailAccountExists() ? (
+            {!gmailNotifications ? (
               <GmailSignInButton />
             ) : (
               <>
                 {gmailNotifications.map((notification, index) => (
                   <div
                     key={index}
-                    className="flex justify-between items-center border-solid border-2  p-3 rounded-lg mb-2"
+                    className="flex justify-between items-center border-solid border-2 p-3 rounded-lg mb-2"
                   >
                     <div>
                       <p>{notification.subject}</p>
-                      <p className="text-sm text-gray-400">
-                        {notification.date}
-                      </p>
+                      <p className="text-sm text-gray-400">{notification.date}</p>
                     </div>
                     <Button>Undo</Button>
                   </div>
@@ -121,7 +76,7 @@ export default async function Dashboard() {
             <Image src={redditLogo} alt="reddit logo" />
           </CardHeader>
           <CardContent>
-            {!redditAccountExists() ? (
+            {!redditNotifications ? (
               <RedditSignInButton />
             ) : (
               <>
@@ -131,9 +86,9 @@ export default async function Dashboard() {
                     className="flex justify-between items-center border-solid border-2 p-3 rounded-lg mb-2"
                   >
                     <div>
-                      <p>{notification.message}</p>
+                      <p>{notification.body}</p>
                       <p className="text-sm text-gray-400">
-                        {notification.date}
+                        {new Date(notification.created_utc * 1000).toLocaleDateString()}
                       </p>
                     </div>
                     <Button>Undo</Button>
@@ -144,27 +99,24 @@ export default async function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Github Notifications */}
+        {/* GitHub Notifications */}
         <Card>
           <CardHeader>
             <Image src={githubLogo} alt="github logo" />
           </CardHeader>
           <CardContent>
-            {!githubAccountExists() ? (
+            {!githubNotifications ? (
               <GithubSignInButton />
             ) : (
               <>
-                {" "}
                 {githubNotifications.map((notification, index) => (
                   <div
                     key={index}
                     className="flex justify-between items-center border-solid border-2 p-3 rounded-lg mb-2"
                   >
                     <div>
-                      <p>{notification.message}</p>
-                      <p className="text-sm text-gray-400">
-                        {notification.date}
-                      </p>
+                      <p>{notification.subject?.title}</p>
+                      <p className="text-sm text-gray-400">{notification.updated_at}</p>
                     </div>
                     <Button>Undo</Button>
                   </div>
