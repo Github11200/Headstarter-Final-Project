@@ -1,12 +1,16 @@
 "use client";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Spline from "@splinetool/react-spline/next";
 import Image from "next/image";
-import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import React from 'react';
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import React from "react";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +18,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
       {/* Header */}
-      <header className="bg-white dark:bg-black text-black dark:text-white shadow-lg sticky top-0 z-50">
+      <header className="bg-white dark:bg-black text-black dark:text-white shadow-lg sticky top-0 z-50 ">
         <div className="container mx-auto px-6 md:px-8 py-4 md:py-6 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             {/* Profile Picture */}
@@ -91,15 +95,9 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-24 sm:py-32 md:py-44 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-center">
-        {/* Spline Component */}
-        <div className="hidden lg:block absolute inset-y-15 right-[5%]">
-          <Spline scene="https://prod.spline.design/y5kDXIQzIsB7g8UE/scene.splinecode" />
-        </div>
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+      <section className="relative py-24 sm:py-32 md:py-44 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-center min-h-screen grid place-content-center">
         {/* Hero Content */}
-        <div className="relative container mx-auto px-4 sm:px-6 md:px-8 z-10">
+        <div className="relative container mx-auto px-4 sm:px-6 md:px-8 z-10 mb-60">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             One Unified Social Media Platform
           </h2>
@@ -115,7 +113,7 @@ export default function Home() {
             </Link>
           </div>
           {/* Demo Video */}
-          <div className="mt-10 sm:mt-12 flex justify-center">
+          {/* <div className="mt-10 sm:mt-12 flex justify-center">
             <div className="relative w-full max-w-xs sm:max-w-md md:max-w-xl" style={{ paddingBottom: "56.25%" }}>
               <iframe
                 className="absolute inset-0 w-full h-full border-2 border-gray-600"
@@ -126,7 +124,7 @@ export default function Home() {
                 title="Demo"
               ></iframe>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -211,7 +209,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-

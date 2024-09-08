@@ -7,24 +7,30 @@ import { CardContent } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import Link from "next/link";
 
-
-
 export default function HowItWorks() {
   return (
     <div className="bg-gray-900 text-white font-sans">
       {/* Header */}
       <header className="bg-gray-800 shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-6 md:px-8 py-4 md:py-6 flex justify-between items-center">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">NotifyHub</h1>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
+            NotifyHub
+          </h1>
           <nav>
             <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
               <li>
-                <Link href="/" className="text-gray-300 hover:text-white transition text-lg font-medium">
+                <Link
+                  href="/"
+                  className="text-gray-300 hover:text-white transition text-lg font-medium"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <a href="#how-it-works" className="text-gray-300 hover:text-white transition text-lg font-medium">
+                <a
+                  href="#how-it-works"
+                  className="text-gray-300 hover:text-white transition text-lg font-medium"
+                >
                   How It Works
                 </a>
               </li>
@@ -50,7 +56,8 @@ export default function HowItWorks() {
             How NotifyHub Works
           </h2>
           <p className="mt-4 md:mt-6 text-lg md:text-xl text-gray-300">
-            Discover how our unified platform simplifies your notifications and enhances your productivity.
+            Discover how our unified platform simplifies your notifications and
+            enhances your productivity.
           </p>
         </div>
       </section>
@@ -62,33 +69,42 @@ export default function HowItWorks() {
             Our Simple 3-Step Process
           </h2>
           <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <Card >
+            <Card>
               <CardHeader>
-                <h3 className="text-lg md:text-xl font-semibold text-white">Step 1: Connect Your Accounts</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">
+                  Step 1: Connect Your Accounts
+                </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Easily connect your email, social media, and other notification sources to NotifyHub.
+                  Easily connect your email, social media, and other
+                  notification sources to NotifyHub.
                 </p>
               </CardContent>
             </Card>
-            <Card >
+            <Card>
               <CardHeader>
-                <h3 className="text-lg md:text-xl font-semibold text-white">Step 2: Customize Notifications</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">
+                  Step 2: Customize Notifications
+                </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Set your preferences for how and when you receive notifications to stay organized and focused.
+                  Set your preferences for how and when you receive
+                  notifications to stay organized and focused.
                 </p>
               </CardContent>
             </Card>
-            <Card >
+            <Card>
               <CardHeader>
-                <h3 className="text-lg md:text-xl font-semibold text-white">Step 3: Monitor and Manage</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">
+                  Step 3: Monitor and Manage
+                </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  View and manage all your notifications from a single dashboard, keeping everything at your fingertips.
+                  View and manage all your notifications from a single
+                  dashboard, keeping everything at your fingertips.
                 </p>
               </CardContent>
             </Card>
@@ -105,31 +121,40 @@ export default function HowItWorks() {
           <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <Card className="bg-gray-700 hover:bg-gray-600 transition">
               <CardHeader>
-                <h3 className="text-lg md:text-xl font-semibold text-white">Real-Time Updates</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">
+                  Real-Time Updates
+                </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Receive real-time notifications from all your connected accounts without delay.
+                  Receive real-time notifications from all your connected
+                  accounts without delay.
                 </p>
               </CardContent>
             </Card>
             <Card className="bg-gray-700 hover:bg-gray-600 transition">
               <CardHeader>
-                <h3 className="text-lg md:text-xl font-semibold text-white">Advanced Filtering</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">
+                  Advanced Filtering
+                </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Use advanced filters to organize and prioritize notifications based on your needs.
+                  Use advanced filters to organize and prioritize notifications
+                  based on your needs.
                 </p>
               </CardContent>
             </Card>
             <Card className="bg-gray-700 hover:bg-gray-600 transition">
               <CardHeader>
-                <h3 className="text-lg md:text-xl font-semibold text-white">Detailed Analytics</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">
+                  Detailed Analytics
+                </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Analyze your notification patterns and get insights to improve your productivity.
+                  Analyze your notification patterns and get insights to improve
+                  your productivity.
                 </p>
               </CardContent>
             </Card>
@@ -145,21 +170,31 @@ export default function HowItWorks() {
           </h2>
           <div className="mt-8 md:mt-12 space-y-6">
             <div className="bg-gray-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-white">How do I connect my accounts?</h3>
+              <h3 className="text-xl font-semibold text-white">
+                How do I connect my accounts?
+              </h3>
               <p className="text-gray-300 mt-2">
-                You can connect your accounts by going to the "Dashboard" page and selecting "Connect Accounts". Follow the prompts to link your accounts.
+                You can connect your accounts by going to the "Dashboard" page
+                and selecting "Connect Accounts". Follow the prompts to link
+                your accounts.
               </p>
             </div>
             <div className="bg-gray-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-white">Can I customize the notifications?</h3>
+              <h3 className="text-xl font-semibold text-white">
+                Can I customize the notifications?
+              </h3>
               <p className="text-gray-300 mt-2">
-                Yes, you can customize your notification preferences in the "Preferences" section of the dashboard.
+                Yes, you can customize your notification preferences in the
+                "Preferences" section of the dashboard.
               </p>
             </div>
             <div className="bg-gray-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-white">Is my data secure?</h3>
+              <h3 className="text-xl font-semibold text-white">
+                Is my data secure?
+              </h3>
               <p className="text-gray-300 mt-2">
-                We use industry-standard encryption and security practices to ensure your data is protected.
+                We use industry-standard encryption and security practices to
+                ensure your data is protected.
               </p>
             </div>
           </div>
@@ -169,11 +204,28 @@ export default function HowItWorks() {
       {/* Footer */}
       <footer className="bg-gray-800 text-gray-400 py-8 md:py-12">
         <div className="container mx-auto px-6 md:px-8 text-center">
-          <p className="text-sm md:text-base">&copy; 2024 NotifyHub. All rights reserved.</p>
+          <p className="text-sm md:text-base">
+            &copy; 2024 NotifyHub. All rights reserved.
+          </p>
           <div className="mt-4">
-            <a href="#" className="mx-2 hover:text-white transition text-sm md:text-base">LinkedIn</a>
-            <a href="#" className="mx-2 hover:text-white transition text-sm md:text-base">Twitter</a>
-            <a href="#" className="mx-2 hover:text-white transition text-sm md:text-base">GitHub</a>
+            <a
+              href="#"
+              className="mx-2 hover:text-white transition text-sm md:text-base"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="#"
+              className="mx-2 hover:text-white transition text-sm md:text-base"
+            >
+              Twitter
+            </a>
+            <a
+              href="#"
+              className="mx-2 hover:text-white transition text-sm md:text-base"
+            >
+              GitHub
+            </a>
           </div>
         </div>
       </footer>
