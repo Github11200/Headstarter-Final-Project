@@ -174,9 +174,9 @@ export default function HowItWorks() {
                 How do I connect my accounts?
               </h3>
               <p className="text-gray-300 mt-2">
-                You can connect your accounts by going to the "Dashboard" page
-                and selecting "Connect Accounts". Follow the prompts to link
-                your accounts.
+                You can connect your accounts by going to the
+                &quot;Dashboard&quot; page and selecting &quot;Connect
+                Accounts&quot;. Follow the prompts to link your accounts.
               </p>
             </div>
             <div className="bg-gray-700 p-6 rounded-lg">
@@ -185,7 +185,7 @@ export default function HowItWorks() {
               </h3>
               <p className="text-gray-300 mt-2">
                 Yes, you can customize your notification preferences in the
-                "Preferences" section of the dashboard.
+                &quot;Preferences&quot; section of the dashboard.
               </p>
             </div>
             <div className="bg-gray-700 p-6 rounded-lg">

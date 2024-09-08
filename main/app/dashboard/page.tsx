@@ -22,14 +22,19 @@ async function fetchNotifications() {
   const redditToken = cookieStore.get("reddit_access_token")?.value;
 
   const gmailNotifications = gmailToken ? await getGmailNotifications() : null;
-  const githubNotifications = githubToken ? await getGitHubNotifications() : null;
-  const redditNotifications = redditToken ? await getRedditNotifications() : null;
+  const githubNotifications = githubToken
+    ? await getGitHubNotifications()
+    : null;
+  const redditNotifications = redditToken
+    ? await getRedditNotifications()
+    : null;
 
   return { gmailNotifications, githubNotifications, redditNotifications };
 }
 
 export default async function Dashboard() {
-  const { gmailNotifications, githubNotifications, redditNotifications } = await fetchNotifications();
+  const { gmailNotifications, githubNotifications, redditNotifications } =
+    await fetchNotifications();
 
   return (
     <div className="p-5 min-h-screen">
@@ -60,7 +65,9 @@ export default async function Dashboard() {
                   >
                     <div>
                       <p>{notification.subject}</p>
-                      <p className="text-sm text-gray-400">{notification.date}</p>
+                      <p className="text-sm text-gray-400">
+                        {notification.snippet}
+                      </p>
                     </div>
                     <Button>Undo</Button>
                   </div>
@@ -88,7 +95,9 @@ export default async function Dashboard() {
                     <div>
                       <p>{notification.body}</p>
                       <p className="text-sm text-gray-400">
-                        {new Date(notification.created_utc * 1000).toLocaleDateString()}
+                        {new Date(
+                          notification.created_utc * 1000
+                        ).toLocaleDateString()}
                       </p>
                     </div>
                     <Button>Undo</Button>
@@ -116,7 +125,9 @@ export default async function Dashboard() {
                   >
                     <div>
                       <p>{notification.subject?.title}</p>
-                      <p className="text-sm text-gray-400">{notification.updated_at}</p>
+                      <p className="text-sm text-gray-400">
+                        {notification.updated_at}
+                      </p>
                     </div>
                     <Button>Undo</Button>
                   </div>
