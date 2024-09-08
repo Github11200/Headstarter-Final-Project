@@ -25,20 +25,26 @@ import axios from "axios";
 import { useTheme } from "next-themes";
 import { ModeToggle } from "@/components/mode-toggle";
 
-// Define the form schema
+// Define the form schema, object schema
 const waitlistFormSchema = z.object({
+  //defines schema property 'email' that must be a string
+  //uses the.email method to valid email format
   email: z.string().email("Invalid email address"),
 });
 
 const CombinedLayout = () => {
+  //reack hook form initializes form and integrate zod schema, gets inform tyopr from the schema defined above
   const form = useForm<z.infer<typeof waitlistFormSchema>>({
+    //connects the zod schema with react hook form
     resolver: zodResolver(waitlistFormSchema),
     defaultValues: {
+      //sets initial values to empty string
       email: "",
     },
   });
 
   // State management
+  //m
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
